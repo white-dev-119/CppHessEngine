@@ -15,6 +15,12 @@ enum class Pieces
     KING,
     EMPTY
 };
+enum EventType
+{
+    MOVE,
+    ATTACK,
+    RANK_UP
+};
 struct Position
 {
     int row;
@@ -26,6 +32,10 @@ struct Position
     bool operator==(const Position& other) const {
         return row == other.row && col == other.col;
     }
+};
+struct PossibleMove: Position 
+{
+    EventType type;
 };
 struct PlayerMove
 {
@@ -39,4 +49,8 @@ struct PlayerMove
     {
         return to.getIndex();
     }
+};
+
+class Event
+{
 };

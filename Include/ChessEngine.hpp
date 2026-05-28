@@ -11,9 +11,11 @@ public:
     std::vector<Tile> movePiece(PlayerMove move);
     std::vector<Tile> getBoard() const;
     bool validateMove(PlayerMove move);
-    std::vector<Position> getPossibleMoves(Position figurePosition);
+    std::vector<PossibleMove> getPossibleMoves(Position figurePosition);
 
 private:
     std::vector<Tile> board;
+    std::vector<Event> event_list;
     void initializeBoard();
+    void registerEvent(EventType event_type);
 };

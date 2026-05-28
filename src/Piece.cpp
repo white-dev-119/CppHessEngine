@@ -39,7 +39,7 @@ bool Piece::isWhite() const {
 void Piece::moved(){
     has_moved = true;
 }
-bool Piece::hasMoved() {
+bool Piece::hasMoved() const {
     return has_moved;
 }
 void Piece::setType(Pieces t_type){
