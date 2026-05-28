@@ -17,15 +17,6 @@ int main()
         pos2.col = 5;
         move.to = pos2;
         game.move(move);
-        // move.from = pos2;
     }
-    // game.getPossibleMoves(pos2);
-
-    // PlayerMove move2;
-    // move2.from.row = 2;
-    // move2.from.col = 5;
-    // move2.to.row = 3;
-    // move2.to.col = 5;
-    // game.move(move2);
     return 0;
 }

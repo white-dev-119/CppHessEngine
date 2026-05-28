@@ -80,7 +80,6 @@ bool ChessEngine::validateMove(PlayerMove move)
     std::vector<PossibleMove> possibleMoves = getPossibleMoves(move.from);
     if (std::find(possibleMoves.begin(), possibleMoves.end(), move.to) != possibleMoves.end())
     {
-        std::cout << "Found" << std::endl;
         return true;
     }
     return false;
@@ -102,7 +101,6 @@ void ChessEngine::registerEvent(EventType type)
     switch (type)
     {
     case EventType::MOVE:
-        std::cout << "Moved" << std::endl;
         break;
     default:
         break;

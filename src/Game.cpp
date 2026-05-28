@@ -21,7 +21,7 @@ void Game::getPossibleMoves(Position pos) {
 };
 void Game::drawBoard(const std::vector<Tile> &board)
 {
-    const int CELL_WIDTH = 4;
+    const int CELL_WIDTH = 8;
     for (int row = 8; row >= 1; --row)
     {
         std::cout << std::setw(CELL_WIDTH) << row;
@@ -42,12 +42,11 @@ void Game::drawBoard(const std::vector<Tile> &board)
 }
 void Game::drawBoard(const std::vector<Tile> &board, const std::vector<PossibleMove> &possible_positions)
 {
-    const int CELL_WIDTH = 4;
+    const int CELL_WIDTH = 8;
     std::vector<int> possible_position_indexes = {};
     for (auto i : possible_positions)
     {
         possible_position_indexes.push_back(i.getIndex());
-        std::cout << i.getIndex() << std::endl;
     }
 
     for (int row = 8; row >= 1; --row)
