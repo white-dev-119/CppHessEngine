@@ -34,7 +34,7 @@ struct Position
     }
     bool inBounds()
     {
-        if (row < 8 && col < 8)
+        if (row < 8 && col < 8 && row > -1 && col > -1)
         {
             return true;
         }
