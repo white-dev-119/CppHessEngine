@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include "Utils.hpp"
 
 int main()
 {
@@ -9,7 +8,7 @@ int main()
         Position pos;
         pos.row = 1 + i;
         pos.col = 6;
-        game.getPossibleMoves(pos);
+        game.renderPossibleMoves(pos);
         PlayerMove move;
         move.from = pos;
         Position pos2;
@@ -19,8 +18,16 @@ int main()
         game.move(move);
     }
     Position pos;
+    Position epos;
     pos.row = 0;
-    pos.col = 5;
-    game.getPossibleMoves(pos);
+    pos.col = 6;
+    epos.row = 2;
+    epos.col = 5;
+    game.renderPossibleMoves(pos);
+    PlayerMove move;
+    move.from = pos;
+    move.to = epos;
+    game.move(move);
+    game.renderPossibleMoves(epos);
     return 0;
 }

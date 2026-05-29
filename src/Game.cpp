@@ -16,7 +16,7 @@ void Game::move(PlayerMove move)
 {
     drawBoard(engine.movePiece(move));
 }
-void Game::getPossibleMoves(Position pos) {
+void Game::renderPossibleMoves(Position pos) {
     drawBoard(engine.getBoard(), engine.getPossibleMoves(pos));
 };
 void Game::drawBoard(const std::vector<Tile> &board)

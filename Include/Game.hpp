@@ -15,7 +15,7 @@ public:
     Game(ChessEngine &engine);
     Game();
     void move(PlayerMove move);
-    void getPossibleMoves(Position chess_pos);
+    void renderPossibleMoves(Position chess_pos);
 
 private:
     bool running;

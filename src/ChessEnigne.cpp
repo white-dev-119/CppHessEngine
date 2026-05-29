@@ -1,5 +1,4 @@
 #include "ChessEngine.hpp"
-#include <algorithm>
 
 ChessEngine::ChessEngine()
 {
@@ -269,7 +268,119 @@ std::vector<PossibleMove> ChessEngine::getPossibleMoves(Position figurePosition)
 
         break;
     }
-    case Pieces::KNIGHT:
+    case Pieces::KNIGHT: {
+        size_t squares = 1;
+        PossibleMove pos;
+        PossibleMove n_pos;
+        while (squares < 5)
+        {
+            if (squares % 2 == 1)
+            {
+                int row = figurePosition.row;
+                if (squares == 3)
+                {
+                    row = row - 2;
+                }
+                else
+                {
+                    row = row + 2;
+                }
+                pos.row = row;
+                n_pos.row = row;
+
+                pos.col = figurePosition.col + 1;
+                n_pos.col = figurePosition.col - 1;
+
+                if(pos.inBounds())
+                {
+                    Piece piece = board[pos.getIndex()].getFigure();
+                    if(piece.getType() == Pieces::EMPTY)
+                    {
+                        pos.type = EventType::MOVE;
+                        possibleMoves.push_back(pos);
+                    }
+                    else if(piece.getType() != Pieces::EMPTY && piece.getColor() == figure.getColor())
+                    {}
+                    else if(piece.getType() != Pieces::EMPTY && piece.getColor() != figure.getColor())
+                    {
+                        pos.type = EventType::ATTACK;
+                        possibleMoves.push_back(pos);
+                    }
+                }
+                if(n_pos.inBounds())
+                {
+                    Piece piece = board[n_pos.getIndex()].getFigure();
+                    if(piece.getType() == Pieces::EMPTY)
+                    {
+                        n_pos.type = EventType::MOVE;
+                        possibleMoves.push_back(n_pos);
+                    }
+                    else if(piece.getType() != Pieces::EMPTY && piece.getColor() == figure.getColor())
+                    {}
+                    else if(piece.getType() != Pieces::EMPTY && piece.getColor() != figure.getColor())
+                    {
+                        n_pos.type = EventType::ATTACK;
+                        possibleMoves.push_back(n_pos);
+                    }
+                }
+            }
+            else
+            {
+                int col = figurePosition.col;
+                if (squares == 4)
+                {
+                    col = col - 2;
+                }
+                else
+                {
+                    col = col + 2;
+                }
+                pos.col = col;
+                n_pos.col = col;
+
+                pos.row = figurePosition.row + 1;
+                n_pos.row = figurePosition.row - 1;
+
+                if (pos.inBounds())
+                {
+                    Piece piece = board[pos.getIndex()].getFigure();
+                    if (piece.getType() == Pieces::EMPTY)
+                    {
+                        pos.type = EventType::MOVE;
+                        possibleMoves.push_back(pos);
+                    }
+                    else if (piece.getType() != Pieces::EMPTY && piece.getColor() == figure.getColor())
+                    {
+                    }
+                    else if (piece.getType() != Pieces::EMPTY && piece.getColor() != figure.getColor())
+                    {
+                        pos.type = EventType::ATTACK;
+                        possibleMoves.push_back(pos);
+                    }
+                }
+                if (n_pos.inBounds())
+                {
+                    Piece piece = board[n_pos.getIndex()].getFigure();
+                    if (piece.getType() == Pieces::EMPTY)
+                    {
+                        n_pos.type = EventType::MOVE;
+                        possibleMoves.push_back(n_pos);
+                    }
+                    else if (piece.getType() != Pieces::EMPTY && piece.getColor() == figure.getColor())
+                    {
+                    }
+                    else if (piece.getType() != Pieces::EMPTY && piece.getColor() != figure.getColor())
+                    {
+                        n_pos.type = EventType::ATTACK;
+                        possibleMoves.push_back(n_pos);
+                    }
+                }
+            }
+            ++squares;
+        }
+
+        break;
+    }
     case Pieces::QUEEN:
     case Pieces::KING:
     default:
