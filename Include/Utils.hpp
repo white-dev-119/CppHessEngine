@@ -32,6 +32,14 @@ struct Position
     bool operator==(const Position& other) const {
         return row == other.row && col == other.col;
     }
+    bool inBounds()
+    {
+        if (row < 8 && col < 8)
+        {
+            return true;
+        }
+        return false;
+    }
 };
 struct PossibleMove: Position 
 {
@@ -52,5 +60,4 @@ struct PlayerMove
 };
 
 class Event
-{
-};
+{};

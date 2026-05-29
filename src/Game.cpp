@@ -43,10 +43,19 @@ void Game::drawBoard(const std::vector<Tile> &board)
 void Game::drawBoard(const std::vector<Tile> &board, const std::vector<PossibleMove> &possible_positions)
 {
     const int CELL_WIDTH = 8;
-    std::vector<int> possible_position_indexes = {};
+    std::vector<int> possible_moves_indexes = {};
+    std::vector<int> possible_attack_indexes = {};
     for (auto i : possible_positions)
     {
-        possible_position_indexes.push_back(i.getIndex());
+        if (i.type == EventType::MOVE)
+        {
+
+            possible_moves_indexes.push_back(i.getIndex());
+        }
+        else if(i.type == EventType::ATTACK)
+        {
+            possible_attack_indexes.push_back(i.getIndex());
+        }
     }
 
     for (int row = 8; row >= 1; --row)
@@ -55,7 +64,11 @@ void Game::drawBoard(const std::vector<Tile> &board, const std::vector<PossibleM
         for (int col = 0; col < 8; ++col)
         {
             int index = (row - 1) * 8 + col;
-            if (std::find(possible_position_indexes.begin(), possible_position_indexes.end(), index) != possible_position_indexes.end())
+            if (std::find(possible_moves_indexes.begin(), possible_moves_indexes.end(), index) != possible_moves_indexes.end())
+            {
+                std::cout << std::setw(CELL_WIDTH) << "O";
+            }
+            else if (std::find(possible_attack_indexes.begin(), possible_attack_indexes.end(), index) != possible_attack_indexes.end())
             {
                 std::cout << std::setw(CELL_WIDTH) << "X";
             }

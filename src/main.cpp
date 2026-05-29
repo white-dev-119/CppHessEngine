@@ -8,15 +8,19 @@ int main()
     {
         Position pos;
         pos.row = 1 + i;
-        pos.col = 5;
+        pos.col = 6;
         game.getPossibleMoves(pos);
         PlayerMove move;
         move.from = pos;
         Position pos2;
         pos2.row = 1 + 1 + i;
-        pos2.col = 5;
+        pos2.col = 6;
         move.to = pos2;
         game.move(move);
     }
+    Position pos;
+    pos.row = 0;
+    pos.col = 5;
+    game.getPossibleMoves(pos);
     return 0;
 }
